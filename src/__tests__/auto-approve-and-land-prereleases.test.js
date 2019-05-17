@@ -31,7 +31,7 @@ describe('auto-approve-and-land-prereleases', () => {
 
   it('non-approval for non-release payload', async () => {
     await robot.receive({
-      event: 'pull_request',
+      name: 'pull_request',
       payload: nonReleasePayload,
     });
 
@@ -44,7 +44,7 @@ describe('auto-approve-and-land-prereleases', () => {
 
   it('approval for pre-release payload', async () => {
     await robot.receive({
-      event: 'pull_request',
+      name: 'pull_request',
       payload: prereleasePayload,
     });
 
@@ -68,12 +68,12 @@ describe('auto-approve-and-land-prereleases', () => {
     };
     // Passes the mocked out GitHub API into out robot instance
     robot.auth = () => Promise.resolve(github);
-    
+
     await robot.receive({
-      event: 'pull_request',
+      name: 'pull_request',
       payload: prereleasePayload,
     });
-    
+
     // Should silently fail with no approval/merge
     const createReviewCalls = github.pullRequests.createReview.mock.calls;
     const mergeCalls = github.pullRequests.merge.mock.calls;
@@ -89,12 +89,12 @@ describe('auto-approve-and-land-prereleases', () => {
     };
     // Passes the mocked out GitHub API into out robot instance
     robot.auth = () => Promise.resolve(github);
-    
+
     await robot.receive({
-      event: 'status',
+      name: 'status',
       payload: statusPendingBuildPayload,
     });
-    
+
     // Should immediately set success
     const statusCalls = github.repos.createStatus.mock.calls;
     expect(github.repos.createStatus).toHaveBeenCalled();
@@ -110,12 +110,12 @@ describe('auto-approve-and-land-prereleases', () => {
     };
     // Passes the mocked out GitHub API into out robot instance
     robot.auth = () => Promise.resolve(github);
-    
+
     await robot.receive({
-      event: 'status',
+      name: 'status',
       payload: statusPendingNonBuildPayload,
     });
-    
+
     // Should be a no-op
     const statusCalls = github.repos.createStatus.mock.calls;
     expect(github.repos.createStatus).not.toHaveBeenCalled();

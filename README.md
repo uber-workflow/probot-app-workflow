@@ -1,5 +1,5 @@
 # probot-app-workflow
 
-[![Build status](https://badge.buildkite.com/e15234f1df563e9bbc6b0f50e245f5e0eb56e8e85d3d9285d0.svg?branch=master)](https://buildkite.com/uberopensource/probot-app-workflow)
+[![Build Status](https://badge.buildkite.com/e5f7f5a7752144bbab4f124e2524f6e6e4c0f96b686b457978.svg)](https://buildkite.com/uberopensource/uber-workflow-probot)
 
-Probot app for repos in the fusionjs org
+Probot app for repos in the uber-workflow org

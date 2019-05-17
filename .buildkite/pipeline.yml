@@ -2,7 +2,7 @@ steps:
   - name: ":docker: :package:"
     plugins:
       docker-compose#v2.6.0:
-        build: probot-app-workflow
+        build: uber-workflow-probot
         image-repository: 027047743804.dkr.ecr.us-east-2.amazonaws.com/uber
     agents:
       queue: builders
@@ -12,7 +12,7 @@ steps:
     concurrency_group: "deploy"
     plugins:
       docker-compose#v2.6.0:
-        run: probot-app-workflow
+        run: uber-workflow-probot
     agents:
       queue: workers
   - wait
@@ -23,7 +23,7 @@ steps:
     branches: master
     plugins:
       docker-compose#v2.6.0:
-        run: probot-app-workflow
+        run: uber-workflow-probot
     agents:
       queue: workers
 

@@ -1,15 +1,13 @@
 version: '2'
 services:
-  probot-app-workflow:
+  uber-workflow-probot:
     build: .
     volumes:
-      - .:/probot-app-workflow
-      - /probot-app-workflow/node_modules/
+      - .:/uber-workflow-probot
+      - /uber-workflow-probot/node_modules/
     environment:
       - NOW_TOKEN
       - NOW_TEAM
-      - ORG_LIST
-      - GH_TOKEN
       - BUILDKITE
       - BUILDKITE_REPO
       - BUILDKITE_BRANCH

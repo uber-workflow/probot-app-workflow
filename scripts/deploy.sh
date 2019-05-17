@@ -2,7 +2,7 @@
 
 set -e
 
-orgs=(`echo $ORG_LIST`)
+orgs=(uber-workflow)
 team=$NOW_TEAM
 token=$NOW_TOKEN
 
